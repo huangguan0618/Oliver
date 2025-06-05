@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25.2)
-project(Arietta LANGUAGES CXX)
+project(Oliver LANGUAGES CXX)
 
 option(ARIETTA_ENABLE_TESTING "Build Arietta testing suite" ON)
 option(ARIETTA_ENABLE_DEPENDENCIES "Automatically download dependency libraries if they are not present" ON)

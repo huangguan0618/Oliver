@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.25.2)
 project(Oliver LANGUAGES CXX)
 
-option(ARIETTA_ENABLE_TESTING "Build Arietta testing suite" ON)
-option(ARIETTA_ENABLE_DEPENDENCIES "Automatically download dependency libraries if they are not present" ON)
+option(OLIVER_ENABLE_TESTING "Build Arietta testing suite" ON)
+option(OLIVER_ENABLE_DEPENDENCIES "Automatically download dependency libraries if they are not present" ON)
 
-if(ARIETTA_ENABLE_DEPENDENCIES AND NOT COMMAND CPMAddPackage)
+if(OLIVER_ENABLE_DEPENDENCIES AND NOT COMMAND CPMAddPackage)
   if(NOT DEFINED ENV{CPM_SOURCE_CACHE})
     message(FATAL_ERROR "Environment variable `CPM_SOURCE_CACHE` is not defined")
   endif()
@@ -18,7 +18,7 @@ if(ARIETTA_ENABLE_DEPENDENCIES AND NOT COMMAND CPMAddPackage)
   FetchContent_MakeAvailable(CPM)
 endif()
 
-if(ARIETTA_ENABLE_DEPENDENCIES AND NOT TARGET Boost::ut)
+if(OLIVER_ENABLE_DEPENDENCIES AND NOT TARGET Boost::ut)
   CPMAddPackage(
     NAME ut
     GITHUB_REPOSITORY boost-ext/ut
@@ -39,6 +39,6 @@ target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_23)
 
 target_compile_definitions(${PROJECT_NAME} INTERFACE ART_SPECIFIER=)
 
-if(ARIETTA_ENABLE_TESTING)
+if(OLIVER_ENABLE_TESTING)
   add_subdirectory(tests)
 endif()
